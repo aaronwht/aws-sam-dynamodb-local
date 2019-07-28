@@ -40,6 +40,14 @@ In terminal you may view your table's seeded data by running `aws dynamodb scan 
 
 If you've made it this far and data's returning, you've succesfully containerized DynamoDB. 
 Clone this repo and install the dependencies by running `npm install` 
-Run `sam local start-api` to run your Lambda function and your browser should load with the seeded records from your DynamoDB table.
+Run `sam local start-api` to run your Lambda function and your browser should load with the seeded records from your DynamoDB table. 
 
-You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime.
+Pointing your browser to `http://localhost:3000` should return a screen similar to the one below:  
+![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/records.png)
+
+Visiting `http://localhost:3000/record/1` should return a single record:  
+![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/record.png)
+
+You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime. 
+
+If everything 
