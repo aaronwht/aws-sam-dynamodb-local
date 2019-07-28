@@ -11,7 +11,7 @@ const clientdb = new AWS.DynamoDB.DocumentClient()
 
 module.exports.handler = async (event, context) => {
     try {
-        const person = await clientdb.get({ TableName: 'Persons', Key: { 'PersonKey': '1' } }).promise()
+        const person = await clientdb.get({ TableName: 'Persons', Key: { 'PersonKey': event.pathParameters.key } }).promise()
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
