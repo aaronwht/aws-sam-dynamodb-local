@@ -17,14 +17,14 @@ If you don't have [Python](https://www.python.org/) and [Homebrew](https://brew.
 
 Next, download and install [Docker](https://www.docker.com/).  Once downloaded, run the command `docker pull amazon/dynamodb-local` to pull the [DynamoDB Image](https://hub.docker.com/r/amazon/dynamodb-local/) - this is provided by AWS and will containerize [DynamoDB](https://aws.amazon.com/dynamodb/) locally. 
 
+#### NOTICE - If you don't take this step you will receive an "Internal server error"  
+
 Ensure Docker can run your application locally by adding your application's directory to Docker's `File Sharing` directories by selecting `Preferences` from the Docker menu:  
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-preferences.png)
 
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-config.png)  
 
 My local application runs in the `/apps` folder so I've added it there.  You'll need to add the folder location where you run your applications.  After making that change you'll have to select `Apply & Restart`.
-
-#### NOTICE - If you don't take this step you will receive an "Internal server error"
 
 Download and install [SAM CLI (Serverless Application Model)](https://aws.amazon.com/serverless/sam/) by running the command `brew tap aws/tap` followed by `brew install aws-sam-cli` - obviously this requires [Homebrew](https://brew.sh).  Alternatively, you may download [SAM CLI](https://aws.amazon.com/serverless/sam/) from [AWS](https://aws.amazon.com/).
 
