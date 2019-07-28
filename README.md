@@ -43,7 +43,7 @@ Next, seed your table with a couple records:
 
 In terminal you may view your table's seeded data by running `aws dynamodb scan --table-name Persons --endpoint-url http://localhost:8000`
 
-If you've made it this far and data's being returned, you've succesfully containerized DynamoDB. 
+If you've made it this far and data's being returned, you've successfully containerized DynamoDB. 
 Clone this repo and install the dependencies by running `npm install` 
 Run `sam local start-api` to run your Lambda function and your browser should load with the seeded records from your DynamoDB table. 
 
