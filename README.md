@@ -21,6 +21,7 @@ Ensure Docker can run your application locally by adding your application's dire
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-preferences.png)
 
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-config.png)  
+
 My local application runs in the `/apps` folder so I've added it there.  You'll need to add the folder location where you run your applications.    
 After making that change you'll have to select `Apply & Restart`.
 
