@@ -4,6 +4,8 @@
 
 ##### There are multiple steps to run Lamdba functions locally which connect to a containerized instance of [DynamoDB](https://aws.amazon.com/dynamodb/).  This tutorial provides complete instructions to accomplish this.  
 
+[Contact Me](https://www.aaronwht.com/contact-me) if you run into problems using this repo or tutorial.  
+
 # What You Need 
 Below is the software you need to install (all instructions for use on a Mac):
 - [Python](https://www.python.org/)
