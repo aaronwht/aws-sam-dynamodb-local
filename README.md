@@ -2,10 +2,10 @@
 
 ### READ CAREFULLY - Skipping steps will likely reduce your chances of success  
 
-##### There are multiple steps to run Lamdba functions locally which connect to a containerized instance of [DynamoDB](https://aws.amazon.com/dynamodb/).  This tutorial provides everything you need.  
+##### There are multiple steps to run Lamdba functions locally which connect to a containerized instance of [DynamoDB](https://aws.amazon.com/dynamodb/).  This tutorial provides complete instructions to accomplish this.  
 
-# What You Need
-Below is the software you need to install (all instructions for a Mac and included below):
+# What You Need 
+Below is the software you need to install (all instructions for use on a Mac):
 - [Python](https://www.python.org/)
 - [Homebrew](https://brew.sh)
 - [Docker](https://www.docker.com/)
@@ -16,6 +16,12 @@ Below is the software you need to install (all instructions for a Mac and includ
 If you don't have [Python](https://www.python.org/) and [Homebrew](https://brew.sh) you'll need to get those. 
 
 Next, download and install [Docker](https://www.docker.com/).  Once downloaded, run the command `docker pull amazon/dynamodb-local` to pull the [DynamoDB Image](https://hub.docker.com/r/amazon/dynamodb-local/) - this is provided by AWS and will containerize [DynamoDB](https://aws.amazon.com/dynamodb/) locally. 
+
+Ensure Docker can run your application locally by adding your application's directory to Docker's `File Sharing` directories as displayed below:
+![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/preferences.png)
+
+My local application runs in the `/apps` folder so I need to add it there:
+![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-config.png)
 
 Download and install [SAM CLI (Serverless Application Model)](https://aws.amazon.com/serverless/sam/) by running the command `brew tap aws/tap` followed by `brew install aws-sam-cli` - obviously this requires [Homebrew](https://brew.sh).  Alternatively, you may download [SAM CLI](https://aws.amazon.com/serverless/sam/) from [AWS](https://aws.amazon.com/).
 
