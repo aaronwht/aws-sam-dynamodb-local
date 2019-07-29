@@ -41,8 +41,9 @@ This terminal window will need to remain open as you use DynamoDB.
 Again, notice the `-dbPath /data`.  If you're storing your DynamoDB's data somewhere else you'll need to specify that folder location.  
 
 If for any reason the above command doesn't work, you may try a non-persistent containerized version of DynamoDB by running the below command:  
-`docker run -p 8000:8000 amazon/dynamodb-local`.   
-This command will NOT PERSIST DATA.  Every time you restart your container (restart Docker, restart your computer) any data will be erased as it is only saved into the container's memory.  
+`docker run -p 8000:8000 amazon/dynamodb-local`.  
+
+This command will NOT PERSIST DATA.  Every time you restart your container (restart Docker, restart your computer) all data will be erased as it is only saved into the container's memory.  
 
 Presuming you have DynamoDB running in a Docker container, download and install [SAM CLI (Serverless Application Model)](https://aws.amazon.com/serverless/sam/) if you haven't done so.  You may do this by running the command `brew tap aws/tap` followed by `brew install aws-sam-cli` - obviously this requires [Homebrew](https://brew.sh).  Alternatively, you may download [SAM CLI](https://aws.amazon.com/serverless/sam/) from [AWS](https://aws.amazon.com/).
 
