@@ -26,7 +26,7 @@ Next, download and install [Docker](https://www.docker.com/).  Once downloaded, 
 Ensure Docker and DynamoDB can run locally by adding your application and `dynamodb` folders to Docker's `File Sharing` directories by selecting `Preferences` from the Docker menu:  
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-preferences.png)
 
-![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-config.png)  
+![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-configuration.png)  
 
 My local applications run in the `/apps` folder so I've added it.  You also need to ensure Docker can containerize DynamoDB - I installed DynamoDB in the folder `/dynamodb` so I provided that location to Docker as well (as pictured above).  After making those changes you'll have to select `Apply & Restart`.
 
