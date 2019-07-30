@@ -45,9 +45,7 @@ If for any reason the above command doesn't work, you may try a non-persistent c
 
 This command will NOT PERSIST DATA.  Every time you restart your container (restart Docker, restart your computer) all data will be erased as it is only saved into the container's memory.  
 
-Presuming you have DynamoDB running in a Docker container, download and install [SAM CLI (Serverless Application Model)](https://aws.amazon.com/serverless/sam/) if you haven't done so.  You may do this by running the command `brew tap aws/tap` followed by `brew install aws-sam-cli` - obviously this requires [Homebrew](https://brew.sh).  Alternatively, you may download [SAM CLI](https://aws.amazon.com/serverless/sam/) from [AWS](https://aws.amazon.com/).
-
-#### NOTICE - Ending your terminal session terminates your DynamoDB instance and you'll have to re-create and re-seed table contents 
+Presuming you have DynamoDB running in a Docker container, download and install [SAM CLI (Serverless Application Model)](https://aws.amazon.com/serverless/sam/) if you haven't done so.  You may do this by running the command `brew tap aws/tap` followed by `brew install aws-sam-cli` - obviously this requires [Homebrew](https://brew.sh).  Alternatively, you may download [SAM CLI](https://aws.amazon.com/serverless/sam/) from [AWS](https://aws.amazon.com/). 
 
 In a new tab, create a table using the below command: 
 `aws dynamodb create-table --table-name Persons --attribute-definitions AttributeName=PersonKey,AttributeType=S --key-schema AttributeName=PersonKey,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost:8000`
