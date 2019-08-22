@@ -1,6 +1,5 @@
-AWSTemplateFormatVersion: 2010-09-09
-Transform:
-- AWS::Serverless-2016-10-31
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
 
 Resources:
   Index:
@@ -11,7 +10,7 @@ Resources:
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
-      Runtime: nodejs8.10
+      Runtime: nodejs10.x
       Role:
         Fn::GetAtt:
         - LambdaExecutionRole
@@ -21,7 +20,7 @@ Resources:
           Type: Api
           Properties:
             Path: /
-            Method: get
+            Method: GET
   One:
     Type: AWS::Serverless::Function
     Properties:
@@ -30,7 +29,7 @@ Resources:
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
-      Runtime: nodejs8.10
+      Runtime: nodejs10.x
       Role:
         Fn::GetAtt:
         - LambdaExecutionRole
@@ -40,4 +39,4 @@ Resources:
           Type: Api
           Properties:
             Path: /record/{key}
-            Method: get
+            Method: GET

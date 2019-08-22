@@ -1,10 +1,26 @@
 version: 0.2
-
 phases:
-  pre_build:
-    commands:
-      - npm install --no-progress --silent
+  install:
+    runtime-versions:
+        nodejs: 10
   build:
     commands:
-      #- npm run-script lint
-      #- npm run test
+      - npm install time
+      - export BUCKET=aws-lambda-dynamodb
+      - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
+artifacts:
+  type: zip
+  files:
+    - template.yaml
+    - outputtemplate.yaml
+
+#version: 0.2
+
+#phases:
+#  pre_build:
+#    commands:
+#      - npm install --no-progress --silent
+#  build:
+#    commands:
+#      #- npm run-script lint
+#      #- npm run test
