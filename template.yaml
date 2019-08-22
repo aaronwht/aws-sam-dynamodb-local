@@ -21,7 +21,6 @@ Resources:
           Properties:
             Path: /
             Method: GET
-            CodeUri: .
   One:
     Type: AWS::Serverless::Function
     Properties:
@@ -41,4 +40,3 @@ Resources:
           Properties:
             Path: /record/{key}
             Method: GET
-            CodeUri: .
