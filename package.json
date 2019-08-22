@@ -1,5 +1,5 @@
 {
-  "name": "aaronwht-serverless",
+  "name": "aws-lambda-dynamodb-local",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
