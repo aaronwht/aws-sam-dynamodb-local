@@ -7,15 +7,17 @@ AWS.config.update({
     }
 })
 
+// sam local start-api
 const clientdb = new AWS.DynamoDB.DocumentClient()
 
 module.exports.handler = async (event, context) => {
+    
     return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 'status': 'success' })
     }
-
+    
     try {
         const persons = await clientdb.scan({ TableName: "Persons" }).promise()
         return {
@@ -29,4 +31,5 @@ module.exports.handler = async (event, context) => {
             err
         }
     }
+    
 }
