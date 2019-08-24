@@ -7,6 +7,8 @@ phases:
     commands:
       # - npm install time
       - export BUCKET=aws-lambda-dynamodb
+      - brew tap aws/tap
+      - brew install aws-sam-cli
       - sam package
       - sam deploy
       # - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET --output-template-file outputtemplate.yaml
