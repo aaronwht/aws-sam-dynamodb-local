@@ -16,7 +16,7 @@ This Pipeline is configured to look up for GitHub information stored on [EC2 Sys
 
 Replace the placeholders with values corresponding to your GitHub Repo and Token:
 
-#2ef25c57abecc98fb829a298288722171be2061f
+#
 ```bash
 aws ssm put-parameter --name "/service/aws-lambda-dynamodb-pipeline/github/repo" --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipeline-pipeline" --type "String" --value "GITHUB_REPO_NAME"
 
