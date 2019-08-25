@@ -18,13 +18,13 @@ Replace the placeholders with values corresponding to your GitHub Repo and Token
 
 #
 ```bash
-aws ssm put-parameter --name "/service/aws-lambda-dynamodb-pipeline/github/repo" --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipeline" --type "String" --value "GITHUB_REPO_NAME"
+aws ssm put-parameter --name "/service/aws-lambda-dynamodb-pipeline/github/repo" --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipeline" --type "String" --value "aws-lambda-dynamodb"
 
 aws ssm put-parameter \
     --name "/service/aws-lambda-dynamodb-pipeline/github/token" \
     --description "Github Token for Cloudformation Stack aws-lambda-dynamodb-pipeline" \
     --type "String" \
-    --value "TOKEN"
+    --value "x"
 
 aws ssm put-parameter \
     --name "/service/aws-lambda-dynamodb-pipeline/github/user" \
