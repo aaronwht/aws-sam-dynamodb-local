@@ -18,22 +18,22 @@ Replace the placeholders with values corresponding to your GitHub Repo and Token
 
 #
 ```bash
-aws ssm put-parameter --name "/service/aws-lambda-dynamodb-pipeline/github/repo" --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipeline-pipeline" --type "String" --value "GITHUB_REPO_NAME"
+aws ssm put-parameter --name "/service/aws-lambda-dynamodb-pipeline/github/repo" --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipeline" --type "String" --value "GITHUB_REPO_NAME"
 
 aws ssm put-parameter \
     --name "/service/aws-lambda-dynamodb-pipeline/github/token" \
-    --description "Github Token for Cloudformation Stack aws-lambda-dynamodb-pipeline-pipeline" \
+    --description "Github Token for Cloudformation Stack aws-lambda-dynamodb-pipeline" \
     --type "String" \
     --value "TOKEN"
 
 aws ssm put-parameter \
     --name "/service/aws-lambda-dynamodb-pipeline/github/user" \
-    --description "Github Username for Cloudformation Stack aws-lambda-dynamodb-pipeline-pipeline" \
+    --description "Github Username for Cloudformation Stack aws-lambda-dynamodb-pipeline" \
     --type "String" \
     --value "GITHUB_USER"
 ```
 
-**NOTE:** Keep in mind that these Parameters will only be available within the same region you're deploying this Pipeline stack. Also, if these values ever change you will need to [update these parameters](https://docs.aws.amazon.com/cli/latest/reference/ssm/put-parameter.html) as well as update the "aws-lambda-dynamodb-pipeline-pipeline" Cloudformation stack.
+**NOTE:** Keep in mind that these Parameters will only be available within the same region you're deploying this Pipeline stack. Also, if these values ever change you will need to [update these parameters](https://docs.aws.amazon.com/cli/latest/reference/ssm/put-parameter.html) as well as update the "aws-lambda-dynamodb-pipeline" Cloudformation stack.
 
 ## Pipeline creation
 
@@ -87,7 +87,7 @@ Run the following AWS CLI command to create your first pipeline for your SAM bas
 
 ```bash
 aws cloudformation create-stack \
-    --stack-name aws-lambda-dynamodb-pipeline-pipeline \
+    --stack-name aws-lambda-dynamodb-pipeline \
     --template-body file://pipeline.yaml \
     --capabilities CAPABILITY_NAMED_IAM
 ```
@@ -96,7 +96,7 @@ This may take a couple of minutes to complete, therefore give it a minute or two
 
 ```bash
 aws cloudformation describe-stacks \
-    --stack-name aws-lambda-dynamodb-pipeline-pipeline \
+    --stack-name aws-lambda-dynamodb-pipeline \
     --query 'Stacks[].Outputs'
 ```
 
