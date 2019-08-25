@@ -2,3 +2,4 @@ node_modules/
 awscli-bundle/
 *.zip
 .DS_Store
+.env
