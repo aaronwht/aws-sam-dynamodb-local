@@ -6,11 +6,10 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs10.x
-      CodeUri: s3://aws-lambda-dynamodb/7762703312a428a5ee00cb40606e53dc
+      CodeUri: s3://aws-lambda-dynamodb/fdd2336f957588c1a9afba6c660b7202
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
-          REGION: 'us-west-1'
       Events:
         GetEvent:
           Type: Api
