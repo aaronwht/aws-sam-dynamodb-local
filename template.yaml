@@ -16,46 +16,18 @@ Resources:
           Properties:
             Path: /
             Method: GET
-
-#AWSTemplateFormatVersion: '2010-09-09'
-#Transform: AWS::Serverless-2016-10-31
-
-#Resources:
-#  Index:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: index.handler
-#      Timeout: 3 # Seconds - 3 is the AWS Lambda default
-#      Environment:
-#        Variables:
-#          AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
-#      Runtime: nodejs10.x
-#      Role:
-#        Fn::GetAtt:
-#        - LambdaExecutionRole
-#        - Arn
-#      Events:
-#        GetEvent:
-#          Type: Api
-#          Properties:
-#            Path: /
-#            Method: GET
-#  One:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: one-record.handler
-#      Timeout: 3 # Seconds - 3 is the AWS Lambda default
-#      Environment:
-#        Variables:
-#          AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
-#      Runtime: nodejs10.x
-#      Role:
-#        Fn::GetAtt:
-#        - LambdaExecutionRole
-#        - Arn
-#      Events:
-#        GetEvent:
-#          Type: Api
-#          Properties:
-#            Path: /record/{key}
-#            Method: GET
+  One:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: one-record.handler
+        Runtime: nodejs10.x
+        CodeUri: ./
+        Environment:
+          Variables:
+            AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
+        Events:
+          GetEvent:
+            Type: Api
+            Properties:
+              Path: /record/{key}
+              Method: GET
