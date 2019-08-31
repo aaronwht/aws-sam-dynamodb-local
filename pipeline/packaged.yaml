@@ -9,7 +9,8 @@ Resources:
       CodeUri: s3://aws-lambda-dynamodb/a2902739ad112a82413139f85c6d8ca5
       Environment:
         Variables:
-          AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
+          AWS_DYNAMODB_ENDPOINT: 'http://docker.for.mac.host.internal:8000'
+          AWS_REGION: 'us-west-2'
       Events:
         GetEvent:
           Type: Api
