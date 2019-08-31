@@ -3,3 +3,4 @@ awscli-bundle/
 *.zip
 .DS_Store
 .env
+instructions.txt
