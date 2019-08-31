@@ -1,9 +1,9 @@
-require('dotenv').config()
+// require('dotenv').config()
 const AWS = require('aws-sdk')
 
 AWS.config.update({
     dynamodb: {
-        endpoint: process.env.AWS_DYNAMODB_ENDPOINT
+        // endpoint: process.env.AWS_DYNAMODB_ENDPOINT
     },
     region: 'us-west-2'
 })
