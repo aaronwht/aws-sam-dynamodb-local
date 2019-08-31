@@ -10,7 +10,7 @@ AWS.config.update({
 
 // sam local start-api
 
-const clientdb = new AWS.DynamoDB.DocumentClient(config)
+const clientdb = new AWS.DynamoDB.DocumentClient()
 
 module.exports.handler = async (event, context) => {
     return {
