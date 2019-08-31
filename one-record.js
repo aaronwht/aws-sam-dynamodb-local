@@ -1,11 +1,10 @@
-// require('dotenv').config()
+require('dotenv').config()
 const AWS = require('aws-sdk')
 
 AWS.config.update({
     dynamodb: {
-        // endpoint: process.env.AWS_DYNAMODB_ENDPOINT
-    },
-    region: 'us-west-2'
+        endpoint: process.env.AWS_DYNAMODB_ENDPOINT
+    }
 })
 
 const clientdb = new AWS.DynamoDB.DocumentClient()
