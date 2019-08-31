@@ -9,5 +9,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^8.1.0"
+  }
 }
