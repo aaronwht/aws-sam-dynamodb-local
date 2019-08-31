@@ -1,4 +1,4 @@
-# aws-sam-lambda-dynamodb-pipe
+# aws-lambda-dynamodb-pipe
 
 **This is an example of how to create a minimal pipeline for SAM based Serverless Apps**
 
@@ -18,25 +18,25 @@ Replace the placeholders with values corresponding to your GitHub Repo and Token
 
 ```bash
 aws ssm put-parameter \
-    --name "/service/aws-sam-lambda-dynamodb-pipe/github/repo" \
-    --description "Github Repository name for Cloudformation Stack aws-sam-lambda-dynamodb-pipe-pipeline" \
+    --name "/service/aws-lambda-dynamodb-pipe/github/repo" \
+    --description "Github Repository name for Cloudformation Stack aws-lambda-dynamodb-pipe" \
     --type "String" \
     --value "GITHUB_REPO_NAME"
 
 aws ssm put-parameter \
-    --name "/service/aws-sam-lambda-dynamodb-pipe/github/token" \
-    --description "Github Token for Cloudformation Stack aws-sam-lambda-dynamodb-pipe-pipeline" \
+    --name "/service/aws-lambda-dynamodb-pipe/github/token" \
+    --description "Github Token for Cloudformation Stack aws-lambda-dynamodb-pipe" \
     --type "String" \
     --value "TOKEN"
 
 aws ssm put-parameter \
-    --name "/service/aws-sam-lambda-dynamodb-pipe/github/user" \
-    --description "Github Username for Cloudformation Stack aws-sam-lambda-dynamodb-pipe-pipeline" \
+    --name "/service/aws-lambda-dynamodb-pipe/github/user" \
+    --description "Github Username for Cloudformation Stack aws-lambda-dynamodb-pipe" \
     --type "String" \
     --value "GITHUB_USER"
 ```
 
-**NOTE:** Keep in mind that these Parameters will only be available within the same region you're deploying this Pipeline stack. Also, if these values ever change you will need to [update these parameters](https://docs.aws.amazon.com/cli/latest/reference/ssm/put-parameter.html) as well as update the "aws-sam-lambda-dynamodb-pipe-pipeline" Cloudformation stack.
+**NOTE:** Keep in mind that these Parameters will only be available within the same region you're deploying this Pipeline stack. Also, if these values ever change you will need to [update these parameters](https://docs.aws.amazon.com/cli/latest/reference/ssm/put-parameter.html) as well as update the "aws-lambda-dynamodb-pipe-pipeline" Cloudformation stack.
 
 ## Pipeline creation
 
@@ -90,7 +90,7 @@ Run the following AWS CLI command to create your first pipeline for your SAM bas
 
 ```bash
 aws cloudformation create-stack \
-    --stack-name aws-sam-lambda-dynamodb-pipe-pipeline \
+    --stack-name aws-lambda-dynamodb-pipe \
     --template-body file://pipeline.yaml \
     --capabilities CAPABILITY_NAMED_IAM
 ```
@@ -99,7 +99,7 @@ This may take a couple of minutes to complete, therefore give it a minute or two
 
 ```bash
 aws cloudformation describe-stacks \
-    --stack-name aws-sam-lambda-dynamodb-pipe-pipeline \
+    --stack-name aws-lambda-dynamodb-pipe \
     --query 'Stacks[].Outputs'
 ```
 

@@ -6,7 +6,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs10.x
-      CodeUri: s3://aws-lambda-dynamodb/2af7f97ffb9c219a080975443fe17dd9
+      CodeUri: s3://aws-lambda-dynamodb/a8669870bd4b4082aa9309c52c4f71a8
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
@@ -15,4 +15,19 @@ Resources:
           Type: Api
           Properties:
             Path: /
+            Method: GET
+  One:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: one-record.handler
+      Runtime: nodejs10.x
+      CodeUri: s3://aws-lambda-dynamodb/a8669870bd4b4082aa9309c52c4f71a8
+      Environment:
+        Variables:
+          AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /record/{key}
             Method: GET

@@ -18,18 +18,18 @@ Parameters:
     GithubRepo:
       Description: Gitub Repository name
       Type: AWS::SSM::Parameter::Value<String>
-      Default: /service/aws-sam-lambda-dynamodb-pipe/github/repo
+      Default: /service/aws-lambda-dynamodb-pipe/github/repo
 
     GithubToken:
       Description: Github OAuth Token with full permissions on admin:repo_hook and repo
       Type: AWS::SSM::Parameter::Value<String>
       NoEcho: true
-      Default: /service/aws-sam-lambda-dynamodb-pipe/github/token
+      Default: /service/aws-lambda-dynamodb-pipe/github/token
 
     GithubUser:
       Description: Github user where the repository lives
       Type: AWS::SSM::Parameter::Value<String>
-      Default: /service/aws-sam-lambda-dynamodb-pipe/github/user
+      Default: /service/aws-lambda-dynamodb-pipe/github/user
 
 
 Resources:
@@ -56,7 +56,7 @@ Resources:
               Value: !Ref AWS::StackName
             -
               Key: "Project"
-              Value: aws-sam-lambda-dynamodb-pipe
+              Value: aws-lambda-dynamodb-pipe
         DeletionPolicy: Retain
 
 ########  ##     ## #### ##       ########  
@@ -70,8 +70,8 @@ Resources:
     CodeBuildProject:
         Type: AWS::CodeBuild::Project
         Properties:
-            Name: aws-sam-lambda-dynamodb-pipe
-            Description: Build project for the aws-sam-lambda-dynamodb-pipe
+            Name: aws-lambda-dynamodb-pipe
+            Description: Build project for the aws-lambda-dynamodb-pipe
             Artifacts:
               Type: CODEPIPELINE
             Environment: 
@@ -94,7 +94,7 @@ Resources:
                 Value: !Ref AWS::StackName
               -
                 Key: "Project"
-                Value: aws-sam-lambda-dynamodb-pipe
+                Value: aws-lambda-dynamodb-pipe
 
 ########  #### ########  ######## ##       #### ##    ## ######## 
 ##     ##  ##  ##     ## ##       ##        ##  ###   ## ##       
@@ -110,7 +110,7 @@ Resources:
             ArtifactStore: 
                 Location: !Ref BuildArtifactsBucket
                 Type: S3
-            Name: aws-sam-lambda-dynamodb-pipe
+            Name: aws-lambda-dynamodb-pipe
             RoleArn: !GetAtt CodePipelineExecutionRole.Arn
             Stages:
                 - Name: Source
@@ -156,8 +156,8 @@ Resources:
                       # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Beta
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Beta
+                        StackName: aws-lambda-dynamodb-pipe-Beta
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -172,10 +172,10 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Beta
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Beta
+                        StackName: aws-lambda-dynamodb-pipe-Beta
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
                       OutputArtifacts:
-                        - Name: aws-sam-lambda-dynamodb-pipeBetaChangeSet
+                        - Name: aws-lambda-dynamodb-pipeBetaChangeSet
                       RunOrder: 2
                 - Name: Gamma
                   Actions:
@@ -188,8 +188,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Gamma
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Gamma
+                        StackName: aws-lambda-dynamodb-pipe-Gamma
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -204,10 +204,10 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Gamma
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Gamma
+                        StackName: aws-lambda-dynamodb-pipe-Gamma
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
                       OutputArtifacts:
-                        - Name: aws-sam-lambda-dynamodb-pipeGammaChangeSet
+                        - Name: aws-lambda-dynamodb-pipeGammaChangeSet
                       RunOrder: 2
                 - Name: Prod
                   Actions:
@@ -227,8 +227,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Prod
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Prod
+                        StackName: aws-lambda-dynamodb-pipe-Prod
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -243,10 +243,10 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-sam-lambda-dynamodb-pipe-Prod
-                        ChangeSetName: aws-sam-lambda-dynamodb-pipe-ChangeSet-Prod
+                        StackName: aws-lambda-dynamodb-pipe-Prod
+                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Prod
                       OutputArtifacts:
-                        - Name: aws-sam-lambda-dynamodb-pipeProdChangeSet
+                        - Name: aws-lambda-dynamodb-pipeProdChangeSet
                       RunOrder: 3
 
 
@@ -283,8 +283,8 @@ Resources:
                           - 'logs:CreateLogStream'
                           - 'logs:PutLogEvents'
                         Resource:
-                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-sam-lambda-dynamodb-pipe'
-                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-sam-lambda-dynamodb-pipe:*'
+                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-lambda-dynamodb-pipe'
+                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-lambda-dynamodb-pipe:*'
                 - PolicyName: CodeBuildArtifactsBucket
                   PolicyDocument:
                     Version: '2012-10-17'
@@ -383,7 +383,7 @@ Resources:
                           - 'cloudformation:SetStackPolicy'
                           - 'cloudformation:ValidateTemplate'
                         Resource: 
-                          - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/aws-sam-lambda-dynamodb-pipe*/*'
+                          - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/aws-lambda-dynamodb-pipe*/*'
                           - !Sub 'arn:aws:cloudformation:${AWS::Region}:aws:transform/Serverless-2016-10-31'
 
 
