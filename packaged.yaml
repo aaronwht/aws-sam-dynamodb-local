@@ -6,7 +6,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs10.x
-      CodeUri: s3://aws-lambda-dynamodb/65d2d40249424602a42fe8053b3df06b
+      CodeUri: s3://aws-lambda-dynamodb/0117b02c1c77c68534c10be7d2f3864a
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
@@ -21,7 +21,7 @@ Resources:
     Properties:
       Handler: one-record.handler
       Runtime: nodejs10.x
-      CodeUri: s3://aws-lambda-dynamodb/65d2d40249424602a42fe8053b3df06b
+      CodeUri: s3://aws-lambda-dynamodb/0117b02c1c77c68534c10be7d2f3864a
       Environment:
         Variables:
           AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
@@ -34,18 +34,13 @@ Resources:
   PersonsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      AttributeDefinitions:
-      - AttributeName: personsKey
-        AttributeType: S
-      - AttributeName: firstName
-        AttributeType: S
-      - AttributeName: lastName
-        AttributeType: S
-      KeySchema:
-      - AttributeName: personsKey
-        KeyType: HASH
-      - AttributeName: id
-        KeyType: RANGE
+      TableName: Persons
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
+      KeySchema:
+      - AttributeName: personKey
+        KeyType: HASH
+      AttributeDefinitions:
+      - AttributeName: personKey
+        AttributeType: S
