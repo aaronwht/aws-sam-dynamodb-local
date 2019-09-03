@@ -32,20 +32,19 @@ Resources:
               Path: /record/{key}
               Method: GET
   PersonsTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: "personsKey"
+    Type: "AWS::DynamoDB::Table"
+    Properties: 
+      AttributeDefinitions: 
+        - AttributeName: "personKey"
           AttributeType: "S"
         - AttributeName: "firstName"
           AttributeType: "S"
         - AttributeName: "lastName"
           AttributeType: "S"
-      KeySchema:
-        - AttributeName: "personsKey"
-          KeyType: "HASH"
-        - AttributeName: "id"
-          KeyType: "RANGE"
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+          KeySchema:
+          - AttributeName: "personKey"
+            KeyType: "RANGE"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "1"
+        WriteCapacityUnits: "1"
+      TableName: "Persons"
