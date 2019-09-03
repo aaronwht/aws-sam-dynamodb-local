@@ -16,6 +16,21 @@ Resources:
           Properties:
             Path: /
             Method: GET
+  Post:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: post.handler
+      Runtime: nodejs10.x
+      CodeUri: ./
+      Environment:
+        Variables:
+          AWS_DYNAMODB_ENDPOINT: http://docker.for.mac.host.internal:8000
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /post
+            Method: GET
   One:
       Type: AWS::Serverless::Function
       Properties:
