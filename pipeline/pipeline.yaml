@@ -77,7 +77,7 @@ Resources:
             Environment: 
                 Type: LINUX_CONTAINER
                 ComputeType: BUILD_GENERAL1_SMALL
-                Image: aws/codebuild/python:3.6.5 # More info on Images: https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html
+                Image: aws/codebuild/nodejs:10 # More info on Images: https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html
                 EnvironmentVariables:
                   - 
                     Name: BUILD_OUTPUT_BUCKET
@@ -144,80 +144,80 @@ Resources:
                         - Name: SourceCodeAsZip
                       OutputArtifacts:
                         - Name: BuildArtifactAsZip
-                - Name: Beta
-                  Actions:
-                    - Name: CreateChangeSet
-                      ActionTypeId:
-                        Category: Deploy
-                        Owner: AWS
-                        Provider: CloudFormation
-                        Version: "1"
-                      Configuration:
-                      # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
-                        ActionMode: CHANGE_SET_REPLACE
-                        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Beta
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
-                        TemplatePath: BuildArtifactAsZip::packaged.yaml
-                        Capabilities: CAPABILITY_IAM
-                      InputArtifacts:
-                        - Name: BuildArtifactAsZip
-                      RunOrder: 1
-                    - Name: ExecuteChangeSet
-                      ActionTypeId:
-                        Category: Deploy
-                        Owner: AWS
-                        Provider: CloudFormation
-                        Version: "1"
-                      Configuration:
-                        ActionMode: CHANGE_SET_EXECUTE
-                        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Beta
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
-                      OutputArtifacts:
-                        - Name: aws-lambda-dynamodb-pipeBetaChangeSet
-                      RunOrder: 2
-                - Name: Gamma
-                  Actions:
-                    - Name: CreateChangeSet
-                      ActionTypeId:
-                        Category: Deploy
-                        Owner: AWS
-                        Provider: CloudFormation
-                        Version: "1"
-                      Configuration:
-                        ActionMode: CHANGE_SET_REPLACE
-                        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Gamma
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
-                        TemplatePath: BuildArtifactAsZip::packaged.yaml
-                        Capabilities: CAPABILITY_IAM
-                      InputArtifacts:
-                        - Name: BuildArtifactAsZip
-                      RunOrder: 1
-                    - Name: ExecuteChangeSet
-                      ActionTypeId:
-                        Category: Deploy
-                        Owner: AWS
-                        Provider: CloudFormation
-                        Version: "1"
-                      Configuration:
-                        ActionMode: CHANGE_SET_EXECUTE
-                        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Gamma
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
-                      OutputArtifacts:
-                        - Name: aws-lambda-dynamodb-pipeGammaChangeSet
-                      RunOrder: 2
+                #- Name: Beta
+                #  Actions:
+                #    - Name: CreateChangeSet
+                #      ActionTypeId:
+                #        Category: Deploy
+                #        Owner: AWS
+                #        Provider: CloudFormation
+                #        Version: "1"
+                #      Configuration:
+                #      # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
+                #        ActionMode: CHANGE_SET_REPLACE
+                #        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+                #        StackName: aws-lambda-dynamodb-pipe-Beta
+                #        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
+                #        TemplatePath: BuildArtifactAsZip::packaged.yaml
+                #        Capabilities: CAPABILITY_IAM
+                #      InputArtifacts:
+                #        - Name: BuildArtifactAsZip
+                #      RunOrder: 1
+                #    - Name: ExecuteChangeSet
+                #      ActionTypeId:
+                #        Category: Deploy
+                #        Owner: AWS
+                #        Provider: CloudFormation
+                #        Version: "1"
+                #      Configuration:
+                #        ActionMode: CHANGE_SET_EXECUTE
+                #        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+                #        StackName: aws-lambda-dynamodb-pipe-Beta
+                #        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Beta
+                #      OutputArtifacts:
+                #        - Name: aws-lambda-dynamodb-pipeBetaChangeSet
+                #      RunOrder: 2
+                #- Name: Gamma
+                #  Actions:
+                #    - Name: CreateChangeSet
+                #      ActionTypeId:
+                #        Category: Deploy
+                #        Owner: AWS
+                #        Provider: CloudFormation
+                #        Version: "1"
+                #      Configuration:
+                #        ActionMode: CHANGE_SET_REPLACE
+                #        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+                #        StackName: aws-lambda-dynamodb-pipe-Gamma
+                #        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
+                #        TemplatePath: BuildArtifactAsZip::packaged.yaml
+                #        Capabilities: CAPABILITY_IAM
+                #      InputArtifacts:
+                #        - Name: BuildArtifactAsZip
+                #      RunOrder: 1
+                #    - Name: ExecuteChangeSet
+                #      ActionTypeId:
+                #        Category: Deploy
+                #        Owner: AWS
+                #        Provider: CloudFormation
+                #        Version: "1"
+                #      Configuration:
+                #        ActionMode: CHANGE_SET_EXECUTE
+                #        RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+                #        StackName: aws-lambda-dynamodb-pipe-Gamma
+                #        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Gamma
+                #      OutputArtifacts:
+                #        - Name: aws-lambda-dynamodb-pipeGammaChangeSet
+                #      RunOrder: 2
                 - Name: Prod
                   Actions:
-                    - Name: DeploymentApproval
-                      ActionTypeId:
-                        Category: Approval
-                        Owner: AWS
-                        Provider: Manual
-                        Version: "1"
-                      RunOrder: 1
+                    #- Name: DeploymentApproval
+                    #  ActionTypeId:
+                    #    Category: Deploy
+                    #    Owner: AWS
+                    #    Provider: CloudFormation
+                    #    Version: "1"
+                    #  RunOrder: 1
                     - Name: CreateChangeSet
                       ActionTypeId:
                         Category: Deploy
@@ -227,8 +227,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Prod
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Prod
+                        StackName: aws-lambda-dynamodb-pipe-stack
+                        ChangeSetName: aws-lambda-dynamodb-pipe-changeset
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -243,8 +243,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: aws-lambda-dynamodb-pipe-Prod
-                        ChangeSetName: aws-lambda-dynamodb-pipe-ChangeSet-Prod
+                        StackName: aws-lambda-dynamodb-pipe-stack
+                        ChangeSetName: aws-lambda-dynamodb-pipe-changeset
                       OutputArtifacts:
                         - Name: aws-lambda-dynamodb-pipeProdChangeSet
                       RunOrder: 3
