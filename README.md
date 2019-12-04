@@ -69,4 +69,4 @@ Visiting `http://localhost:3000/record/1` should return a single record:
 
 You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime.  
 
-If this helped you consider supporting me at [Patreon](https://www.patreon.com/aaronwht) 
+If this helped you please consider making a one-time $1-$3 donation to supporting me at [Patreon](https://www.patreon.com/aaronwht)
