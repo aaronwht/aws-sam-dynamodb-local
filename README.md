@@ -1,4 +1,4 @@
-# Run AWS Lambda with DynamoDB locally  
+# Run AWS SAM with DynamoDB locally  
 
 ### READ CAREFULLY - Skipping steps will likely reduce your chances of success  
 
