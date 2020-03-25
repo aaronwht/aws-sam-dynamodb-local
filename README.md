@@ -14,9 +14,10 @@ Below is the software you need to install (all instructions for use on a Mac):
 - [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
 - [Java Runtime Environment (JRE)](https://www.java.com/en/download/)
 - [Node.js](https://www.nodejs.org/)
+- [AWS CLI](https://aws.amazon.com/cli/) 
 - [SAM CLI](https://hub.docker.com/r/amazon/dynamodb-local/)
 
-### Seven programs!?!?!? - I realize that's a lot - you may already have a few of them.
+### EIGHT programs!?!?!? - I realize that's a lot - you may already have a few of them.
 If you don't have [Python](https://www.python.org/) and [Homebrew](https://brew.sh) you'll need to get those. 
 
 Next, download and install [Docker](https://www.docker.com/).  Once downloaded, run the command `docker pull amazon/dynamodb-local` to pull the [DynamoDB Image](https://hub.docker.com/r/amazon/dynamodb-local/) - this is provided by AWS and will containerize [DynamoDB](https://aws.amazon.com/dynamodb/) locally. 
