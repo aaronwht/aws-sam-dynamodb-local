@@ -68,6 +68,4 @@ Pointing your browser to `http://localhost:3000` should return a screen similar 
 Visiting `http://localhost:3000/record/1` should return a single record:  
 ![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/record.png)
 
-You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime.  
-
-If this helped you consider making a one time $1-$3 donation to support me at [Patreon](https://www.patreon.com/aaronwht)
+You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime.
