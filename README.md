@@ -24,18 +24,14 @@ Next, download and install [Docker](https://www.docker.com/).  Once downloaded, 
 
 #### NOTICE - If you don't take this step you will receive an "Internal server error"  
 
-Ensure Docker and DynamoDB can run locally by adding your application and `dynamodb` folders to Docker's `File Sharing` directories by selecting `Preferences` from the Docker menu:  
-![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-preferences.png)
-
-![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/docker-configuration.png)  
+Ensure Docker and DynamoDB can run locally by adding your application and `dynamodb` folders to Docker's `File Sharing` directories by selecting `Preferences` from the Docker menu.
 
 My local applications run in the `/apps` folder so I've added it.  You also need to ensure Docker can containerize DynamoDB - I installed DynamoDB in the folder `/dynamodb` so I provided that location to Docker as well (as pictured above).  After making those changes you'll have to select `Apply & Restart`.
 
 In order to persist data you'll need a folder for the containerized version of DynamoDB to save data.  I selected a generic folder of `/data` (where I also store MongoDB's data) and will pass it as a flag to run a containerized version of DynamoDB.  
 
 Once you have all the software downloaded you should be able to run [DynamoDB](https://aws.amazon.com/dynamodb/) locally using the below command:  
-`docker run -p 8000:8000 -v $(pwd)/local/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data`.  
-![DynamoDB Locally](https://www.aaronwht.com/images/aws-sam-dynamodb-local/dynamodb-local.png)  
+`docker run -p 8000:8000 -v $(pwd)/local/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data`. 
 
 This terminal window will need to remain open as you use DynamoDB.  
 
@@ -62,10 +58,7 @@ If you've made it this far and data's being returned, you've successfully contai
 Clone this repo and install the dependencies by running `npm install` 
 Run `sam local start-api` to run your Lambda function and your browser should load with the seeded records from your DynamoDB table. 
 
-Pointing your browser to `http://localhost:3000` should return a screen similar to the one below:  
-![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/records.png)
-
-Visiting `http://localhost:3000/record/1` should return a single record:  
-![Docker Preferences](https://www.aaronwht.com/images/aws-sam-dynamodb-local/record.png)
+Pointing your browser to `http://localhost:3000` should return records.    
+Visiting `http://localhost:3000/record/1` should return a single record.    
 
 You may alternatively run `sam local start-api --skip-pull-image` if you wish to skip pulling down the latest Docker image for the Lambda runtime.
